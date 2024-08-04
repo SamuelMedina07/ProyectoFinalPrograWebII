@@ -82,9 +82,9 @@
                         <td><?php echo $fila['foto'] ?></td>
                         <td>
 
-                            <?php echo "<a href='editar.php?idperfil=" . $fila['idperfil'] . "'>editar</a>"; ?>
+                            <?php echo "<a href='editar.php?idperfil=" . $fila['idperfil'] . "'>Editar</a>"; ?>
                             -
-                            <?php echo "<a href='eliminar.php?id=" . $fila['idperfil'] . "'>eliminar</a>"; ?>
+                            <?php echo "<a href='eliminar.php?idperfil=" . $fila['idperfil'] . "'>Eliminar</a>"; ?>
                         </td>
                     </tr>
 
