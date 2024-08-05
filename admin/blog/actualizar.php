@@ -14,7 +14,7 @@ require '../../includes/config/database.php';
 $db = conectarDB();
 
 //Obtener los datos de la publicacion
-$consulta = "SELECT * FROM publicaciones WHERE id = $id";
+$consulta = "SELECT * FROM posts WHERE id = $id";
 $resultado = mysqli_query($db, $consulta);
 $publicacion = mysqli_fetch_assoc($resultado);
 
@@ -22,8 +22,8 @@ $publicacion = mysqli_fetch_assoc($resultado);
 $errores = [];
 
 //Declaracion de variables
-$descripcion = $publicacion['descripcion'];
-$imagenPublicacion = $publicacion['imagen'];
+$descripcion = $publicacion['description'];
+$imagenPublicacion = $publicacion['image'];
 
 //Ejecutar el codigo despues de que el usuario envia el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -34,8 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $descripcion = $_POST['descripcion'];
 
-
-    $creado = date('Y/m/d');
 
     //Asignar FILE para las imagenes
     $imagen = $_FILES['imagen'];
@@ -76,11 +74,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //Subir la imagen
             move_uploaded_file($imagen['tmp_name'], $carpertaImagenes . $nombreImagen);
         }else{
-            $nombreImagen = $publicacion['imagen'];
+            $nombreImagen = $publicacion['image'];
         }
 
         //Insertar en la base de datos
-        $query = "UPDATE publicaciones SET descripcion='$descripcion', imagen='$nombreImagen' WHERE id=$id";
+        $query = "UPDATE posts SET description='$descripcion', image='$nombreImagen' WHERE id=$id";
 
         // echo $query;
 

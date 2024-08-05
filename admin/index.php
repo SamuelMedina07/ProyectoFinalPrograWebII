@@ -5,7 +5,7 @@ require '../includes/config/database.php';
 $db = conectarDB();
 
 //realizamos la consulta a la base
-$query = " SELECT * FROM publicaciones";
+$query = " SELECT * FROM posts";
 
 $resultado = mysqli_query($db, $query);
 
@@ -19,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($id) {
 
         //Eliminar la imagen de la propiedad
-        $consulta = "SELECT imagen FROM publicaciones WHERE id = $id";
+        $consulta = "SELECT image FROM posts WHERE id = $id";
         $resultado = mysqli_query($db, $consulta);
         $publicacion = mysqli_fetch_assoc($resultado);
-        unlink('../imagenes/' . $publicacion['imagen']);
+        unlink('../imagenes/' . $publicacion['image']);
 
         //Eliminar la propiedad
-        $query = "DELETE FROM publicaciones WHERE id = $id";
+        $query = "DELETE FROM posts WHERE id = $id";
         $resultado = mysqli_query($db, $query);
         if ($resultado) {
             header('Location: /admin?resultado=3');
@@ -76,11 +76,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <tbody>
                     <tr>
                         <td><?php echo $publicacion["id"] ?></td>
-                        <td><?php echo $publicacion["descripcion"] ?></td>
+                        <td><?php echo $publicacion["description"] ?></td>
                         <td>
-                            <img src="../imagenes/<?php echo $publicacion["imagen"] ?>" alt="imagen1">
+                            <img src="../imagenes/<?php echo $publicacion["image"] ?>" alt="imagen1">
                         </td>
-                        <td><?php echo $publicacion["creado"] ?></td>
+                        <td><?php echo $publicacion["created_at"] ?></td>
                         <td> 
                             <form method="POST" class="w-100">
                             <input type="hidden" name="id" value="<?php echo $publicacion['id']; ?>">

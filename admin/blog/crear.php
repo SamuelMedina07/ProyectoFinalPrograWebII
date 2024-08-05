@@ -18,9 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // echo "</pre>";
 
     $descripcion = $_POST['descripcion'];
-    
-
-    $creado = date('Y/m/d');
+    $id_user = 5;
 
     //Asignar FILE para las imagenes
     $imagen = $_FILES['imagen'];
@@ -56,8 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         //Insertar en la base de datos
-        $query = "INSERT INTO publicaciones (descripcion, imagen, creado) 
-              VALUES ('$descripcion', '$nombreImagen','$creado')";
+        $query = "INSERT INTO posts (user_id, description, image) 
+              VALUES ('$id_user','$descripcion', '$nombreImagen')";
 
         // echo $query;
       

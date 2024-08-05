@@ -4,7 +4,7 @@ require '../includes/config/database.php';
 $db = conectarDB();
 
 // Realizar la consulta a la base de datos
-$query = "SELECT * FROM publicaciones ORDER BY creado DESC";
+$query = "SELECT * FROM posts ORDER BY created_at DESC";
 $resultado = mysqli_query($db, $query);
 
 // Mensaje condicional
@@ -50,10 +50,10 @@ $result = $_GET['resultado'] ?? null;
             <?php while ($publicacion = mysqli_fetch_assoc($resultado)): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="../imagenes/<?php echo $publicacion['imagen']; ?>" class="card-img-top" alt="Imagen de la Publicación">
+                        <img src="../imagenes/<?php echo $publicacion['image']; ?>" class="card-img-top" alt="Imagen de la Publicación">
                         <div class="card-body">
-                            <p class="card-text"><?php echo $publicacion['descripcion']; ?></p>
-                            <small class="text-muted"><?php echo $publicacion['creado']; ?></small>
+                            <p class="card-text"><?php echo $publicacion['description']; ?></p>
+                            <small class="text-muted"><?php echo $publicacion['created_at']; ?></small>
                         </div>
                     </div>
                 </div>
