@@ -93,7 +93,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tbody>
         </table>
     </div>
-
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>Contacto</h3>
+                    <p>Dirección: Blov Armenta San Pedro Sul, Cortes</p>
+                    <p>Teléfono: (504) 2508-2600</p>
+                    <p>Email: fadsfag@gmail.com</p>
+                </div>
+                <div class="col">
+                    <h3>Usuarios</h3>
+                    <p>Fredys Zavala</p>
+                    <p>Dailan Reyes</p> 
+                    <p>Norman Bu</p>
+                    <p>Jose Hernandez</p>
+                    <p>Fernando Murillo</p>
+                    
+                    
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
