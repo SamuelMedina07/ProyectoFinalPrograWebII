@@ -1,6 +1,19 @@
+$(document.ready(function(){
+  const usuario = $("#usernameCheck");
+  const email = $("emailCheck");
+  const formulario = $(".sign-up-container");
+  formulario.on("submit",function(Evento){
+    const datos = {usuario,email};
+    if(usuario = "")
+    {
+      MostarAlerta("Usuario Obligatorio");
+    }
+  })
+
+}))
+
 function verificarUsuario(){
 	 var username = $("#usernameCheck").val();
-	alert(username); 
 
  var data = {
 	   username : username
@@ -21,16 +34,14 @@ function verificarUsuario(){
         {
           $('#mostrar_mensaje').html(mensaje);
 		  if(mensaje.trim() == "1"){
-             alert("ya existe este usuario favor ubicar otro");
-
-          }else{alert("usuario disponible");}
+             $('#mostrar_mensaje').html("Ya existe este usuario favor ubicar otro");
+          }else{$('#mostrar_mensaje').html("")}
        }
 });
 } 
 
 function verificarEmail(){
   var email = $("#emailCheck").val();
-	alert(email); 
 
  var data = {
 	   email : email
@@ -51,9 +62,27 @@ function verificarEmail(){
         {
           $('#mostrar_mensaje').html(mensaje);
 		  if(mensaje.trim() == "1"){
-             alert("ya existe este email favor ubicar otro");
-
-          }else{alert("usuario disponible");}
+        const msj="Ya existe este email favor ubicar otro";
+             /* $('#mostrar_mensaje').html("Ya existe este email favor ubicar otro"); */
+             MostarAlerta(msj,true)
+          }else{$('#mostrar_mensaje').html("")
+          }
        }
 });
+}
+
+function MostarAlerta(mensaje,error = null){
+const alerta = $('<p>').text(mensaje);
+if(error){
+  alerta.addClass('error');
+}
+else{
+  alerta.addClass('envio');
+}
+
+$("#index.html").append(alerta);
+setTimeout(()=>{
+  alerta.remove();
+},3000);
+
 }

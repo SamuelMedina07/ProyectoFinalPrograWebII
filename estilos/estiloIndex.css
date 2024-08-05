@@ -250,4 +250,19 @@ footer a {
     text-decoration: none;
 }
 
+/* #mostrar_mensaje{
+background-color: red;
+color: white;
+} */
+
+.error{
+	background-color: red;
+	color: white;
+}
+
+.envio{
+	background-color: green;
+	color: white;
+}
+
 /*Dise;o index admin*/

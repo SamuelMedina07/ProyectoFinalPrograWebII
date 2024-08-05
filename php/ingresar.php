@@ -65,4 +65,4 @@ LIMIT 1");
         }else {
             array_push($errors, "Combinación incorrecta de nombre de usuario/contraseña");
         }
-    } -->
+    
