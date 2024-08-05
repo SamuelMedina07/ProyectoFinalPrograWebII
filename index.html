@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="estilos/estiloIndex.css">
+	<script src="javascripts/jsIndex.js" defer></script>
 </head>
 <body>
     <h2>Proyecto Final Grupo #2 Programacion Web II</h2>
@@ -15,17 +16,17 @@
 	<div class="form-container sign-up-container">
 		<form method="POST" action="php/registrar.php">
 			<h1>Crea una nueva cuenta</h1>
-			<input type="email" placeholder="Correo Electronico" name="email" />
-			<input type="text" placeholder="Usuario" name="username"/>
+			<input type="email" placeholder="Correo Electronico" name="email" id="emailCheck" onchange="verificarEmail();"/>
+			<input type="text" placeholder="Usuario" name="username" id="usernameCheck" onchange="verificarUsuario();"/>
 			<input type="password" placeholder="Contraseña" name="password"/>
-			<button type="submit" name="accion" value="Signup">Sign Up</button>
+			<button type="submit" name="accion" value="Signup" >Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
 		<form method="POST" action="php/ingresar.php">
 			<h1>Iniciar Sesion</h1>
 			 <input type="email" placeholder="Correo Electronico" name="email" /> 
-			<!-- <input type="text" placeholder="Usuario" name="username"/> -->
+			<input type="text" placeholder="Usuario" name="username"/>
 			<input type="password" placeholder="Contraseña" name="password"/>
 			<!-- <a href="#">Olvidó su contraseña</a> -->
 			<button type="submit" name="accion" value="Signin">Ingresar</button>
@@ -46,7 +47,9 @@
 		</div>
 	</div>
 </div>
-<script src="javascripts/jsIndex.js"></script>
-
+<div id="mostrar_mensaje"></div>
+<script src="javascripts/consultaRapidaIndex.js"></script>
+<!-- <script src="jquery-3.4.1.min.js" defer></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
 </body>
 </html>

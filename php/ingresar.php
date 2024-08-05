@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['username'] = $user['username'];
         $_SESSION['is_admin'] = $user['is_admin'];
 
-        header("Location: ../admin/index.php");
+        header("Location: ../paginaPrincipal/index.php");
         exit();
     } else {
         $error = "Email o contraseña incorrectos";
