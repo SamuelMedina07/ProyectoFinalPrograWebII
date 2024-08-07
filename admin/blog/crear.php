@@ -1,5 +1,16 @@
 <?php
 
+session_start();
+//var_dump($_SESSION);
+
+/* if (isset($_SESSION)){
+    session_start();
+} */
+$autenticado = $_SESSION["login"] ?? false;
+
+if (!$autenticado){
+    header('location: ../../index.php');
+}
 //Base de datos
 require '../../includes/config/database.php';
 $db = conectarDB();
@@ -62,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $resultado = mysqli_query($db, $query);
         if ($resultado) {
             //Redireccionar al usuario al formulario anterior
-            header('Location: /admin?resultado=1');
+            header('Location: ../index.php?resultado=1');
         }
     }
 }
@@ -86,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="contenedor">
         <h1>Crear</h1>
-        <a href="/admin" class="boton-guardar">↩ Volver</a>
+        <a href="../index.php" class="boton-guardar">↩ Volver</a>
 
         <?php foreach ($errores as $error) : ?>
             <div class="alerta error">
@@ -95,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <?php endforeach; ?>
 
-        <form action="/admin/blog/crear.php" method="POST" enctype="multipart/form-data" class="formulario ">
+        <form action="crear.php" method="POST" enctype="multipart/form-data" class="formulario ">
             <fieldset>
                 <legend>Crear una nueva publicación</legend>
                 <label for="descripcion">Descripcion</label>
@@ -111,6 +122,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
 
-</body>
-
-</html>
+    <?php
+    include('../../includes/template/footer.php');
+    ?>

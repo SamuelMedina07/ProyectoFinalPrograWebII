@@ -1,5 +1,18 @@
 <?php
 // Conectar a la base de datos
+//Verificamos si la sesion ya esta abierta
+session_start();
+//var_dump($_SESSION);
+
+/* if (isset($_SESSION)){
+    session_start();
+} */
+$autenticado = $_SESSION["login"] ?? false;
+
+if (!$autenticado){
+    header('location: ../index.php');
+}
+
 require '../includes/config/database.php';
 $db = conectarDB();
 
@@ -9,35 +22,11 @@ $resultado = mysqli_query($db, $query);
 
 // Mensaje condicional
 $result = $_GET['resultado'] ?? null;
+
+include('../includes/template/header.php');
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/estiloIndex.css">
-</head>
-<body>
-    <header class="bg-primary text-white p-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <img src="img/icon.png" alt="Icono" class="icon" height="40px">
-                <h1 class="h3 ml-2">Página Principal</h1>
-            </div>
-            <div>
-                <a href="../admin/index.php" class="btn btn-primary"><img src="Img/config.png" alt="configuracion" height="40px"></a>
-                <a href="../admin/blog/crear.php" class="btn btn-success">Crear Publicación</a>
-                <a href="" class="btn btn-danger">Cerrar Sesión</a>
-            </div>
-        </div>
-    </header>
+
 
     <main class="container my-4">
         <?php if ($result): ?>
@@ -66,38 +55,6 @@ $result = $_GET['resultado'] ?? null;
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h3>Enlaces</h3>
-                    <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Sobre Nosotros</a></li>
-                        <li><a href="#">Servicios</a></li>
-                        <li><a href="#">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h3>Contacto</h3>
-                    <p>Dirección: Blov Armenta San Pedro Sul, Cortes</p>
-                    <p>Teléfono: (504) 2508-2600</p>
-                    <p>Email: fadsfag@gmail.com</p>
-                </div>
-                <div class="col">
-                    <h3>Usuarios</h3>
-                    <p>Fredys Zavala</p>
-                    <p>Dailan Reyes</p> 
-                    <p>Norman Bu</p>
-                    <p>Jose Hernandez</p>
-                    <p>Fernando Murillo</p>
-                    
-                    
-            </div>
-        </div>
-    </footer>
-   
-</body>
-
-
-</html>
+   <?php
+    include('../includes/template/footer.php');
+    ?>

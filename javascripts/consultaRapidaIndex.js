@@ -35,7 +35,10 @@ function verificarUsuario(){
           $('#mostrar_mensaje').html(mensaje);
 		  if(mensaje.trim() == "1"){
              $('#mostrar_mensaje').html("Ya existe este usuario favor ubicar otro");
-          }else{$('#mostrar_mensaje').html("")}
+             Desabilitar();
+          }else{$('#mostrar_mensaje').html("")
+            Habilitar();
+          }
        }
 });
 } 
@@ -64,8 +67,10 @@ function verificarEmail(){
 		  if(mensaje.trim() == "1"){
         const msj="Ya existe este email favor ubicar otro";
              /* $('#mostrar_mensaje').html("Ya existe este email favor ubicar otro"); */
+        Desabilitar();
              MostarAlerta(msj,true)
           }else{$('#mostrar_mensaje').html("")
+            Habilitar();
           }
        }
 });
@@ -85,4 +90,18 @@ setTimeout(()=>{
   alerta.remove();
 },3000);
 
+}
+
+
+function Desabilitar(){
+
+  document.getElementById("Signup").disabled = true;
+  document.getElementById("Signup").style.cursor = "not-allowed";
+  document.getElementById("Signup").style.opacity = "0.5";
+}
+
+function Habilitar(){
+  document.getElementById("Signup").disabled = false;
+  document.getElementById("Signup").style.cursor = "pointer";
+  document.getElementById("Signup").style.opacity = "1";
 }

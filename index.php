@@ -1,3 +1,8 @@
+<?php
+// var_dump($_SESSION); imprime lo que tiene la variable en arreglo
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,26 +12,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="estilos/estiloIndex.css">
+    <link rel="stylesheet" href="estilos/estiloIndexLog.css">
 	<script src="javascripts/jsIndex.js" defer></script>
 </head>
 <body>
+
+<!-- 	<div class="cookiesContent" id="cookiesPopup">
+		<button class="close">✖</button>
+		<img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
+		<p>We use cookies for improving user experience, analytics and marketing.</p>
+		<button class="accept">That's fine!</button>
+	  </div> -->
     <h2>Proyecto Final Grupo #2 Programacion Web II</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form method="POST" action="php/registrar.php">
 			<h1>Crea una nueva cuenta</h1>
-			<input type="email" placeholder="Correo Electronico" name="email" id="emailCheck" onchange="verificarEmail();"/>
-			<input type="text" placeholder="Usuario" name="username" id="usernameCheck" onchange="verificarUsuario();"/>
-			<input type="password" placeholder="Contraseña" name="password"/>
-			<button type="submit" name="accion" value="Signup" >Sign Up</button>
+			<input type="email" placeholder="Correo Electronico" name="email" id="emailCheck" onchange="verificarEmail();" required/>
+			<input type="text" placeholder="Usuario" name="username" id="usernameCheck" onchange="verificarUsuario();" required/>
+			<input type="password" placeholder="Contraseña" name="password" required/>
+			<button type="submit" name="accion" value="Signup" id="Signup">Sign Up</button>
 		</form>
 	</div>
+	
+
 	<div class="form-container sign-in-container">
 		<form method="POST" action="php/ingresar.php">
 			<h1>Iniciar Sesion</h1>
 			 <input type="email" placeholder="Correo Electronico" name="email" /> 
-			<input type="text" placeholder="Usuario" name="username"/>
+			<!-- <input type="text" placeholder="Usuario" name="username"/> -->
 			<input type="password" placeholder="Contraseña" name="password"/>
 			<!-- <a href="#">Olvidó su contraseña</a> -->
 			<button type="submit" name="accion" value="Signin">Ingresar</button>
@@ -47,6 +61,9 @@
 		</div>
 	</div>
 </div>
+
+
+	
 <div id="mostrar_mensaje"></div>
 <script src="javascripts/consultaRapidaIndex.js"></script>
 <!-- <script src="jquery-3.4.1.min.js" defer></script> -->

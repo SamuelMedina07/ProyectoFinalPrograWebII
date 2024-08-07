@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+
 require '../includes/config/database.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -16,12 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $result->fetch_assoc();
 
     if ($user && password_verify($password, $user['password'])) {
+        session_start(); 
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        $_SESSION['is_admin'] = $user['is_admin'];
-
+       // $_SESSION['is_admin'] = $user['is_admin'];
+       $_SESSION['login'] = true;
+        var_dump($_SESSION);
+        //exit();
         header("Location: ../paginaPrincipal/index.php");
-        exit();
     } else {
         $error = "Email o contraseña incorrectos";
     }

@@ -1,4 +1,16 @@
 <?php
+
+session_start();
+//var_dump($_SESSION);
+
+/* if (isset($_SESSION)){
+    session_start();
+} */
+$autenticado = $_SESSION["login"] ?? false;
+
+if (!$autenticado){
+    header('location: ../index.php');
+}
 require '../includes/config/database.php';
 
 //importar la conexion
@@ -28,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query = "DELETE FROM posts WHERE id = $id";
         $resultado = mysqli_query($db, $query);
         if ($resultado) {
-            header('Location: /admin?resultado=3');
+            header('Location: index.php?resultado=3');
         }
     }
 }
@@ -37,16 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // var_dump($resultado);
 // echo "</pre>";
 // exit;
+include('../includes/template/header.php');
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrar publicaciones</title>
-    <link rel="stylesheet" href="../estilos/styleadmin.css">
-</head>
 
 <body>
     <h1>Administrar tus publicaciones</h1>
@@ -93,36 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </tbody>
         </table>
     </div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h3>Enlaces</h3>
-                    <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Sobre Nosotros</a></li>
-                        <li><a href="#">Servicios</a></li>
-                        <li><a href="#">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h3>Contacto</h3>
-                    <p>Dirección: Blov Armenta San Pedro Sul, Cortes</p>
-                    <p>Teléfono: (504) 2508-2600</p>
-                    <p>Email: fadsfag@gmail.com</p>
-                </div>
-                <div class="col">
-                    <h3>Usuarios</h3>
-                    <p>Fredys Zavala</p>
-                    <p>Dailan Reyes</p> 
-                    <p>Norman Bu</p>
-                    <p>Jose Hernandez</p>
-                    <p>Fernando Murillo</p>
-                    
-                    
-            </div>
-        </div>
-    </footer>
-</body>
-
-</html>
+    
+    <?php
+    include('../includes/template/footer.php');
+    ?>

@@ -1,5 +1,17 @@
 <?php
 
+session_start();
+//var_dump($_SESSION);
+
+/* if (isset($_SESSION)){
+    session_start();
+} */
+$autenticado = $_SESSION["login"] ?? false;
+
+if (!$autenticado){
+    header('location: ../../index.php');
+}
+
 
 //Validar que sea un Id valido
 $id = $_GET['id'];
@@ -85,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $resultado = mysqli_query($db, $query);
         if ($resultado) {
             //Redireccionar al usuario al formulario anterior
-            header('Location: /admin?resultado=2');
+            header('Location: ../index.php?resultado=2');
         }
     }
 }
@@ -110,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="contenedor">
         <h1>Actualizar</h1>
-        <a href="/admin" class="boton-guardar">↩ Volver</a>
+        <a href="../index.php" class="boton-guardar">↩ Volver</a>
 
         <?php foreach ($errores as $error) : ?>
             <div class="alerta error">
@@ -134,7 +146,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </div>
 
-
-</body>
-
-</html>
+    <?php
+    include('../../includes/template/footer.php');
+    ?>
