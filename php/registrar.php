@@ -6,32 +6,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $descripcion = isset($_POST['descripcion']) ? trim($_POST['descripcion']) : 'campo por defecto';
+    $nombreperfil = isset($_POST['nombre']) ? trim($_POST['nombre']) : 'campo por defecto';
+
 
 
     $db = conectarDB();
 
+ 
+ $stmt = $db->prepare("INSERT INTO users (username, email, password, descripcion, nombreperfil, foto) VALUES (?, ?, ?, ?, ?, ?)");
+ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+  
+  $foto = file_get_contents($_FILES['foto']['tmp_name']);
+} else {
+  
+  $foto = file_get_contents('php\images\tr.jpg'); 
+}
+$stmt->bind_param("sssssb", $username, $email, $password, $descripcion, $nombreperfil, $null);
+$stmt->send_long_data(5, $foto);
 
-    $stmt = $db->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $email, $password); 
+
     $stmt->execute();
 
 
-    if ($stmt->affected_rows > 0) {
-        header("Location: ../index.php"); 
-        exit();
-    } else {
-        echo "Error al registrar el usuario.";
-    }
+ if ($stmt->affected_rows > 0) {
+  header("Location: ../index.php");
+  exit();
+} else {
+  echo "Error al registrar el usuario.";
+}
 
-    $db->close();
+$stmt->close();
+$db->close();
 }
 ?>
-
-<div class="container">
-  <div class="cookiesContent" id="cookiesPopup">
-    <button class="close">✖</button>
-    <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
-    <p>We use cookies for improving user experience, analytics and marketing.</p>
-    <button class="accept">That's fine!</button>
-  </div>
-</div>

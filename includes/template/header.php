@@ -20,6 +20,7 @@
                 <h1 class="h3 ml-2">Página Principal</h1>
             </div>
             <div>
+            <a href="../php/index.php" class="btn btn-primary"><img src="../img/usuario.png" alt="perfil" height="40px"></a>
                 <a href="../admin/index.php" class="btn btn-primary"><img src="../img/config.png" alt="configuracion" height="40px"></a>
                 <a href="../admin/blog/crear.php" class="btn btn-success">Crear Publicación</a>
                 <a href="../cerrarsesion.php" class="btn btn-danger" >Cerrar Sesión</a>

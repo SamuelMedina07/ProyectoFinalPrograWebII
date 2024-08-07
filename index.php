@@ -31,6 +31,12 @@
 			<input type="email" placeholder="Correo Electronico" name="email" id="emailCheck" onchange="verificarEmail();" required/>
 			<input type="text" placeholder="Usuario" name="username" id="usernameCheck" onchange="verificarUsuario();" required/>
 			<input type="password" placeholder="Contraseña" name="password" required/>
+
+			<input type="text" id="nombre" name="nombre" value="campo por defecto"  style="display: none;"  />
+			<textarea id="descripcion" name="descripcion" rows="4" style="display: none;">campo por defecto</textarea>
+                <input type="file" name="foto" id="foto" style="display: none;" />
+
+
 			<button type="submit" name="accion" value="Signup" id="Signup">Sign Up</button>
 		</form>
 	</div>
