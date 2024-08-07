@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 
 session_start();
 //var_dump($_SESSION);
@@ -13,9 +12,6 @@ if (!$autenticado){
     header('location: ../index.php');
 }
 require '../includes/config/database.php';
-=======
-require '/includes/config/database.php';
->>>>>>> 663630bd2f03c2bfe9d94b69186a879e0ca68fa8
 
 //importar la conexion
 $db = conectarDB();

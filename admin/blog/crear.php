@@ -97,12 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="contenedor">
         <h1>Crear</h1>
-<<<<<<< HEAD
-        <a href="../index.php" class="boton-guardar">↩ Volver</a>
-=======
         <a href="/admin/index.php" class="boton-guardar">↩ Volver</a>
->>>>>>> 663630bd2f03c2bfe9d94b69186a879e0ca68fa8
-
         <?php foreach ($errores as $error) : ?>
             <div class="alerta error">
                 <?php echo $error; ?>
