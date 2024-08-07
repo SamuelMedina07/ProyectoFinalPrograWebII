@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <div class="contenedor">
         <h1>Crear</h1>
-        <a href="/admin" class="boton-guardar">↩ Volver</a>
+        <a href="/admin/index.php" class="boton-guardar">↩ Volver</a>
 
         <?php foreach ($errores as $error) : ?>
             <div class="alerta error">
